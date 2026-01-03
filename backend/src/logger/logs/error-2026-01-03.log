@@ -1,0 +1,9 @@
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:50:37"}
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:54:11"}
+{"level":"error","message":"Sync failed: insert or update on table \"companies\" violates foreign key constraint \"companies_created_by_fkey\"","timestamp":"2026-01-03 12:54:34"}
+{"level":"error","message":"Sync failed: insert or update on table \"companies\" violates foreign key constraint \"companies_created_by_fkey\"","timestamp":"2026-01-03 12:55:13"}
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:55:47"}
+{"level":"error","message":"Seeding failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:57:47"}
+{"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:57:47"}
+{"level":"error","message":"Seeding failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}
+{"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}

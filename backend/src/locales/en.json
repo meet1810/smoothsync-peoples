@@ -1,0 +1,9 @@
+{
+    "auth": {
+        "login_success": "Login successful",
+        "invalid_credentials": "Invalid email or password"
+    },
+    "common": {
+        "server_error": "Something went wrong"
+    }
+}

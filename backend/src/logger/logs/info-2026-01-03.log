@@ -1,0 +1,57 @@
+{"level":"warn","message":"Panel login failed: admin@gmail.com","timestamp":"2026-01-03 12:18:12"}
+{"level":"warn","message":"Panel login failed: admin@gmail.com","timestamp":"2026-01-03 12:26:26"}
+{"level":"warn","message":"Panel login failed: admin@gmail.com","timestamp":"2026-01-03 12:26:29"}
+{"level":"info","message":"Panel MASTER LOGIN successful: admin@smoothsync.com","timestamp":"2026-01-03 12:26:59"}
+{"level":"info","message":"Panel MASTER LOGIN successful: admin@smoothsync.com","timestamp":"2026-01-03 12:37:08"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:37:18"}
+{"level":"info","message":"Database synced.","timestamp":"2026-01-03 12:39:09"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:39:46"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:43:34"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:44:03"}
+{"level":"info","message":"Database synced.","timestamp":"2026-01-03 12:45:26"}
+{"level":"info","message":"Database synced.","timestamp":"2026-01-03 12:45:49"}
+{"level":"info","message":"Panel MASTER LOGIN successful: admin@smoothsync.com","timestamp":"2026-01-03 12:48:09"}
+{"level":"info","message":"Seed requested by undefined","timestamp":"2026-01-03 12:48:20"}
+{"level":"info","message":"Starting database seeding...","timestamp":"2026-01-03 12:48:20"}
+{"level":"info","message":"✅ Super Admin user created.","timestamp":"2026-01-03 12:48:23"}
+{"level":"info","message":"Demo Company created.","timestamp":"2026-01-03 12:48:24"}
+{"level":"info","message":"HR user created.","timestamp":"2026-01-03 12:48:25"}
+{"level":"info","message":"Department Engineering created.","timestamp":"2026-01-03 12:48:26"}
+{"level":"info","message":"Department Sales created.","timestamp":"2026-01-03 12:48:27"}
+{"level":"info","message":"Department Marketing created.","timestamp":"2026-01-03 12:48:27"}
+{"level":"info","message":"Database seeding completed successfully.","timestamp":"2026-01-03 12:48:27"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 12:50:27"}
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:50:37"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 12:54:05"}
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:54:11"}
+{"level":"info","message":"Panel MASTER LOGIN successful: admin@smoothsync.com","timestamp":"2026-01-03 12:54:19"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:54:26"}
+{"level":"error","message":"Sync failed: insert or update on table \"companies\" violates foreign key constraint \"companies_created_by_fkey\"","timestamp":"2026-01-03 12:54:34"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 12:55:01"}
+{"level":"error","message":"Sync failed: insert or update on table \"companies\" violates foreign key constraint \"companies_created_by_fkey\"","timestamp":"2026-01-03 12:55:13"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 12:55:40"}
+{"level":"error","message":"Drop failed: Cannot set properties of undefined (setting 'supportsSearchPath')","timestamp":"2026-01-03 12:55:47"}
+{"level":"info","message":"Seed requested by undefined","timestamp":"2026-01-03 12:57:44"}
+{"level":"info","message":"Starting database seeding...","timestamp":"2026-01-03 12:57:44"}
+{"level":"error","message":"Seeding failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:57:47"}
+{"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:57:47"}
+{"level":"info","message":"Seed requested by undefined","timestamp":"2026-01-03 12:58:54"}
+{"level":"info","message":"Starting database seeding...","timestamp":"2026-01-03 12:58:54"}
+{"level":"error","message":"Seeding failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}
+{"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 12:59:02"}
+{"level":"info","message":"Database dropped (Force/Cascade).","timestamp":"2026-01-03 12:59:16"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 13:01:33"}
+{"level":"info","message":"Database dropped (Force/Cascade).","timestamp":"2026-01-03 13:01:47"}
+{"level":"warn","message":"DROP DB requested by undefined","timestamp":"2026-01-03 13:01:54"}
+{"level":"info","message":"Database dropped (Force/Cascade).","timestamp":"2026-01-03 13:02:09"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 13:02:18"}
+{"level":"info","message":"Database synced.","timestamp":"2026-01-03 13:03:23"}
+{"level":"info","message":"Seed requested by undefined","timestamp":"2026-01-03 13:03:51"}
+{"level":"info","message":"Starting database seeding...","timestamp":"2026-01-03 13:03:51"}
+{"level":"info","message":"✅ Super Admin user created.","timestamp":"2026-01-03 13:03:54"}
+{"level":"info","message":"✅ HR user created.","timestamp":"2026-01-03 13:03:54"}
+{"level":"info","message":"✅ Demo Company created.","timestamp":"2026-01-03 13:03:55"}
+{"level":"info","message":"✅ 6 Departments created.","timestamp":"2026-01-03 13:03:58"}
+{"level":"info","message":"Seeding Complete! Created: 2 Users, 1 Company, 6 Departments.","timestamp":"2026-01-03 13:03:58"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 13:26:27"}
