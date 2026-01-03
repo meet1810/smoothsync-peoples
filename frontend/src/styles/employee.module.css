@@ -1,0 +1,416 @@
+.container {
+  min-height: 100vh;
+  background: #0a0d10;
+  padding: 2rem;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.headerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #b9f27c 0%, #6ec1ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: #6f7682;
+  font-size: 1.125rem;
+}
+
+.controls {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchWrapper {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6f7682;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  color: #e6eaf0;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.searchInput::placeholder {
+  color: #6f7682;
+}
+
+.searchInput:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #b9f27c;
+  box-shadow: 0 0 0 3px rgba(185, 242, 124, 0.1);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #b9f27c 0%, #9fe05c 100%);
+  color: #0a0d10;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.addButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.addButton:hover::before {
+  left: 100%;
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(185, 242, 124, 0.3);
+}
+
+.addButton:active {
+  transform: translateY(0);
+}
+
+/* Replaced grid with flexbox for responsive card layout */
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  position: relative;
+  /* Set flexible width for cards */
+  flex: 1 1 280px;
+  min-width: 280px;
+  max-width: 100%;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(185, 242, 124, 0.1) 0%, rgba(110, 193, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(185, 242, 124, 0.3);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.cardHeader {
+  position: relative;
+  padding: 1.5rem 1.5rem 0;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 1rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.status {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Updated status styles to match database schema: PRESENT, ABSENT, HALF_DAY, LEAVE */
+.statusPresent {
+  background: rgba(185, 242, 124, 0.2);
+  border-color: rgba(185, 242, 124, 0.4);
+  color: #b9f27c;
+}
+
+.statusAbsent {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.4);
+  color: #ff6b6b;
+}
+
+.statusHalfDay {
+  background: rgba(245, 178, 74, 0.2);
+  border-color: rgba(245, 178, 74, 0.4);
+  color: #f5b24a;
+}
+
+.statusLeave {
+  background: rgba(110, 193, 255, 0.2);
+  border-color: rgba(110, 193, 255, 0.4);
+  color: #6ec1ff;
+}
+
+.cardBody {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e6eaf0;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email {
+  color: #6ec1ff;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone {
+  color: #6f7682;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  color: #6f7682;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #b9f27c;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+  color: #6f7682;
+}
+
+.empty svg {
+  color: #6f7682;
+}
+
+/* Enhanced responsive styles for mobile, tablet, and desktop */
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  /* Flexbox responsive adjustments for mobile */
+  .grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card {
+    border-radius: 12px;
+    /* Full width cards on mobile */
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .cardHeader {
+    padding: 1rem 1rem 0;
+  }
+
+  .cardBody {
+    padding: 0 1rem 1rem;
+  }
+
+  .status {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .searchWrapper {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .addButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  /* 2 column flex layout for tablets */
+  .grid {
+    gap: 1.25rem;
+  }
+
+  .card {
+    flex: 1 1 calc(50% - 0.625rem);
+    min-width: 220px;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .addButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* 3 column flex layout for small desktops */
+  .card {
+    flex: 1 1 calc(33.333% - 1rem);
+    min-width: 240px;
+  }
+
+  .grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  /* 4 column flex layout for medium desktops */
+  .card {
+    flex: 1 1 280px;
+  }
+}
+
+@media (min-width: 1441px) {
+  /* 4-5 column flex layout for large desktops */
+  .card {
+    flex: 1 1 300px;
+  }
+
+  .grid {
+    gap: 1.75rem;
+  }
+}
