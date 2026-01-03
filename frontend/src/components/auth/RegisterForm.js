@@ -10,6 +10,7 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [logoFile, setLogoFile] = useState(null);
+  console.log("logoFile: ", logoFile);
   const [logoPreview, setLogoPreview] = useState(null);
   const [dragActive, setDragActive] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -83,21 +84,20 @@ export default function RegisterForm() {
 
     try {
       const formData = new FormData();
-      formData.append("companyName", data.companyName);
-      formData.append("name", data.name);
+      formData.append("company_name", data.company_name);
+      formData.append("full_name", data.name);
       formData.append("email", data.email);
-      formData.append("phone", data.phone);
+      formData.append("phone_number", data.phone_number);
       formData.append("password", data.password);
+      formData.append("confirm_password", data.confirm_password);
       if (logoFile) {
-        formData.append("logo", logoFile);
+        formData.append("company_logo", logoFile);
       }
 
-
-      console.log('formData: ', ...formData);
-
+      console.log("formData: ", ...formData);
 
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_API_URL || "/api/register",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/register`,
         formData,
         {
           headers: {
@@ -106,20 +106,26 @@ export default function RegisterForm() {
         }
       );
 
-      if (response.data?.success) {
+      console.log("response: ", response);
+
+      if (response.data?.status === "success") {
         setResponseMessage({
           type: "success",
-          text:
-            response.data.message || "Registration successful! Redirecting...",
+          text: response.data.message || "Registration successful!",
         });
 
+        if (response.data.data) {
+          localStorage.setItem("userData", JSON.stringify(response.data.data));
+        }
+
         setTimeout(() => {
-          window.location.href = "/auth/login";
+          window.location.href = "/dashboard";
         }, 2000);
       } else {
         setResponseMessage({
           type: "error",
-          text: response.data.message || "Registration failed. Please try again.",
+          text:
+            response.data.message || "Registration failed. Please try again.",
         });
       }
     } catch (error) {
@@ -151,17 +157,17 @@ export default function RegisterForm() {
               <div className={styles.formRow}>
                 {/* Company Name */}
                 <div className={styles.formGroup}>
-                  <label htmlFor="companyName" className={styles.label}>
+                  <label htmlFor="company_name" className={styles.label}>
                     Company Name
                   </label>
                   <input
-                    id="companyName"
+                    id="company_name"
                     type="text"
                     placeholder="Enter company name"
                     className={`${styles.input} ${
-                      errors.companyName ? styles.inputError : ""
+                      errors.company_name ? styles.inputError : ""
                     }`}
-                    {...register("companyName", {
+                    {...register("company_name", {
                       required: "Company name is required",
                       minLength: {
                         value: 2,
@@ -169,9 +175,9 @@ export default function RegisterForm() {
                       },
                     })}
                   />
-                  {errors.companyName && (
+                  {errors.company_name && (
                     <span className={styles.errorMessage}>
-                      ⚠ {errors.companyName.message}
+                      ⚠ {errors.company_name.message}
                     </span>
                   )}
                 </div>
@@ -232,17 +238,17 @@ export default function RegisterForm() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="phone" className={styles.label}>
+                  <label htmlFor="phone_number" className={styles.label}>
                     Phone Number
                   </label>
                   <input
-                    id="phone"
+                    id="phone_number"
                     type="tel"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+1234567890"
                     className={`${styles.input} ${
-                      errors.phone ? styles.inputError : ""
+                      errors.phone_number ? styles.inputError : ""
                     }`}
-                    {...register("phone", {
+                    {...register("phone_number", {
                       required: "Phone number is required",
                       pattern: {
                         value:
@@ -251,9 +257,9 @@ export default function RegisterForm() {
                       },
                     })}
                   />
-                  {errors.phone && (
+                  {errors.phone_number && (
                     <span className={styles.errorMessage}>
-                      ⚠ {errors.phone.message}
+                      ⚠ {errors.phone_number.message}
                     </span>
                   )}
                 </div>
@@ -371,18 +377,18 @@ export default function RegisterForm() {
 
                 {/* Confirm Password */}
                 <div className={styles.formGroup}>
-                  <label htmlFor="confirmPassword" className={styles.label}>
+                  <label htmlFor="confirm_password" className={styles.label}>
                     Confirm Password
                   </label>
                   <div className={styles.passwordWrapper}>
                     <input
-                      id="confirmPassword"
+                      id="confirm_password"
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Confirm your password"
                       className={`${styles.input} ${styles.passwordInput} ${
-                        errors.confirmPassword ? styles.inputError : ""
+                        errors.confirm_password ? styles.inputError : ""
                       }`}
-                      {...register("confirmPassword", {
+                      {...register("confirm_password", {
                         required: "Please confirm your password",
                         validate: (value) =>
                           value === password || "Passwords do not match",
@@ -427,9 +433,9 @@ export default function RegisterForm() {
                       </svg>
                     </button>
                   </div>
-                  {errors.confirmPassword && (
+                  {errors.confirm_password && (
                     <span className={styles.errorMessage}>
-                      ⚠ {errors.confirmPassword.message}
+                      ⚠ {errors.confirm_password.message}
                     </span>
                   )}
                 </div>

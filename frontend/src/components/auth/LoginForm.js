@@ -81,7 +81,7 @@ export default function LoginForm() {
 
     try {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/login`,
         {
           email: formData.email,
           password: formData.password,
@@ -93,15 +93,17 @@ export default function LoginForm() {
         }
       );
 
-      if (res.data?.success) {
+      console.log("res: ", res);
+
+      if (res.data?.status === "success") {
         setResponseMessage({
           type: "success",
           text: res.data.message || "Login successful",
         });
 
         // store token
-        if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
+        if (res.data) {
+          localStorage.setItem("userData", JSON.stringify(res.data.data));
         }
 
         // redirect
