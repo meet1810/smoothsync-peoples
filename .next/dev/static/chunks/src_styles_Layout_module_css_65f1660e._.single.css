@@ -1,0 +1,17 @@
+/* [project]/src/styles/Layout.module.css [client] (css) */
+.Layout-module__zaQHFq__wrapper {
+  min-height: 100vh;
+  display: flex;
+}
+
+.Layout-module__zaQHFq__main {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+}
+
+.Layout-module__zaQHFq__content {
+  padding: 20px;
+}
+
+/*# sourceMappingURL=src_styles_Layout_module_css_65f1660e._.single.css.map*/
