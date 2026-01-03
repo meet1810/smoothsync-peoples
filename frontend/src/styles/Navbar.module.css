@@ -1,63 +1,66 @@
+/* Glass 3D Effect for Navbar */
 .navbar {
-  background: rgba(15, 19, 24, 0.85);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 16px 32px;
+  --filter-glass3d: blur(32px) brightness(0.85) saturate(2.5);
+  --color-glass3d: hsla(189, 80%, 10%, 0);
+  --noise-glass3d: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+
+  padding: 20px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 0px 0px;
+  margin: 0 0px 0 0;
+
+  box-shadow: 0 0 0.75px hsl(205 20% 10% / 0.2),
+    0.7px 0.8px 1.2px -0.4px hsl(205 20% 10% / 0.1),
+    1.3px 1.5px 2.2px -0.8px hsl(205 20% 10% / 0.1),
+    2.3px 2.6px 3.9px -1.2px hsl(205 20% 10% / 0.1),
+    3.9px 4.4px 6.6px -1.7px hsl(205 20% 10% / 0.1),
+    6.5px 7.2px 10.9px -2.1px hsl(205 20% 10% / 0.1),
+    8px 9px 14px -2.5px hsl(205 20% 10% / 0.2);
 }
 
-.leftSection {
-  display: flex;
-  align-items: center;
-  gap: 48px;
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 3;
+  -webkit-backdrop-filter: var(--filter-glass3d);
+  backdrop-filter: var(--filter-glass3d);
+  background-color: var(--color-glass3d);
+  background-image: var(--noise-glass3d);
+  background-size: 100px;
+  background-repeat: repeat;
 }
 
-.logo {
-  font-size: 19px;
-  font-weight: 700;
-  color: #e6eaf0;
-  letter-spacing: -0.3px;
+.navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 5;
+  box-shadow: inset 2px 2px 1px -3px hsl(205 20% 90% / 0.8),
+    inset 4px 4px 2px -6px hsl(205 20% 90% / 0.3),
+    inset 1.5px 1.5px 1.5px -0.75px hsl(205 20% 90% / 0.15),
+    inset 1.5px 1.5px 0.25px hsl(205 20% 90% / 0.03),
+    inset 0 0 0.25px 0.5px hsl(205 20% 90% / 0.03);
 }
 
-.tabs {
-  display: flex;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 4px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.tab {
-  background: transparent;
-  border: none;
-  color: rgba(230, 234, 240, 0.5);
-  padding: 9px 22px;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  font-weight: 500;
+.navbar > * {
   position: relative;
+  z-index: 6;
 }
 
-.tab:hover {
-  color: rgba(230, 234, 240, 0.8);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.tab.active {
-  background: rgba(185, 242, 124, 0.12);
-  color: #b9f27c;
-  box-shadow: inset 0 1px 2px rgba(185, 242, 124, 0.2),
-    0 2px 8px rgba(185, 242, 124, 0.1);
+.navbarSpacer {
+  flex: 1;
 }
 
 .rightSection {
@@ -66,97 +69,157 @@
   gap: 12px;
 }
 
+/* Icon Button with Glass Effect */
 .iconButton {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  --filter-glass3d: blur(32px) brightness(0.85) saturate(2.5);
+  --color-glass3d: hsl(189 80% 10% / 0.2);
+  --noise-glass3d: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #e6eaf0;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
+  transition: all 0.3s ease;
+
+  box-shadow: 0 0 0.75px hsl(205 20% 10% / 0.2),
+    0.7px 0.8px 1.2px -0.4px hsl(205 20% 10% / 0.1),
+    1.3px 1.5px 2.2px -0.8px hsl(205 20% 10% / 0.1),
+    2.3px 2.6px 3.9px -1.2px hsl(205 20% 10% / 0.1);
+}
+
+.iconButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 3;
+  -webkit-backdrop-filter: var(--filter-glass3d);
+  backdrop-filter: var(--filter-glass3d);
+  background-color: var(--color-glass3d);
+  background-image: var(--noise-glass3d);
+  background-size: 100px;
+  background-repeat: repeat;
+}
+
+.iconButton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 5;
+  box-shadow: inset 2px 2px 1px -3px hsl(205 20% 90% / 0.8),
+    inset 1.5px 1.5px 0.25px hsl(205 20% 90% / 0.03);
+}
+
+.iconButton > * {
+  position: relative;
+  z-index: 6;
 }
 
 .iconButton:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 .badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -6px;
+  right: -6px;
   background: #ff6b6b;
   color: white;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 3px 6px;
+  padding: 3px 7px;
   border-radius: 10px;
-  min-width: 18px;
+  min-width: 20px;
   text-align: center;
   box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
-  border: 1.5px solid rgba(10, 13, 16, 0.8);
+  border: 2px solid rgba(10, 13, 16, 0.8);
+  z-index: 10;
 }
 
+/* User Profile with Glass Effect */
 .userProfile {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  --filter-glass3d: blur(32px) brightness(0.85) saturate(2.5);
+  --color-glass3d: hsl(189 80% 10% / 0.2);
+  --noise-glass3d: url("https://www.transparenttextures.com/patterns/egg-shell.png");
+
   padding: 4px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 11px;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+
+  box-shadow: 0 0 0.75px hsl(205 20% 10% / 0.2),
+    0.7px 0.8px 1.2px -0.4px hsl(205 20% 10% / 0.1),
+    1.3px 1.5px 2.2px -0.8px hsl(205 20% 10% / 0.1),
+    2.3px 2.6px 3.9px -1.2px hsl(205 20% 10% / 0.1);
+}
+
+.userProfile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 3;
+  -webkit-backdrop-filter: var(--filter-glass3d);
+  backdrop-filter: var(--filter-glass3d);
+  background-color: var(--color-glass3d);
+  background-image: var(--noise-glass3d);
+  background-size: 100px;
+  background-repeat: repeat;
+}
+
+.userProfile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 5;
+  box-shadow: inset 2px 2px 1px -3px hsl(205 20% 90% / 0.8),
+    inset 1.5px 1.5px 0.25px hsl(205 20% 90% / 0.03);
+}
+
+.userProfile > * {
+  position: relative;
+  z-index: 6;
 }
 
 .userProfile:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 .userAvatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: linear-gradient(135deg, #f5b24a 0%, #ff9a3d 100%);
-  border-radius: 9px;
-  box-shadow: 0 2px 8px rgba(245, 178, 74, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(245, 178, 74, 0.3);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .navbar {
-    padding: 12px 20px;
-  }
-
-  .tabs {
-    display: none;
-  }
-
-  .leftSection {
-    gap: 24px;
-  }
-}
-
-@media (max-width: 640px) {
-  .navbar {
-    padding: 12px 16px;
-  }
-
-  .logo {
-    font-size: 17px;
-  }
-
-  .rightSection {
-    gap: 8px;
+    margin: 0;
+    border-radius: 0 0 20px 20px;
+    padding: 16px 20px;
   }
 
   .iconButton {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
   }
 }
