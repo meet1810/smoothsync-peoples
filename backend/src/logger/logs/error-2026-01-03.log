@@ -7,3 +7,4 @@
 {"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:57:47"}
 {"level":"error","message":"Seeding failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}
 {"level":"error","message":"Seed failed: relation \"users\" does not exist","timestamp":"2026-01-03 12:58:57"}
+{"level":"error","message":"Sync failed: deadlock detected","timestamp":"2026-01-03 14:14:44"}

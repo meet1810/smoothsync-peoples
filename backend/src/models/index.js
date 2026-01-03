@@ -13,6 +13,8 @@ db.Attendance = require("./attendance.model")(sequelize, db.Sequelize);
 db.LeaveRequest = require("./leave_request.model")(sequelize, db.Sequelize);
 db.AdvanceSalary = require("./advance_salary.model")(sequelize, db.Sequelize);
 db.Holiday = require("./holiday.model")(sequelize, db.Sequelize);
+db.BankDetail = require("./bank_detail.model")(sequelize, db.Sequelize);
+db.SalaryStructure = require("./salary_structure.model")(sequelize, db.Sequelize);
 
 // ==========================================
 // Define Associations
@@ -35,6 +37,10 @@ db.Employee.belongsTo(db.Department, { foreignKey: "department_id" });
 // Department Head (One-to-One mostly, but loosely defined as FK on Dept)
 db.Employee.hasOne(db.Department, { foreignKey: "department_head_id", as: "HeadOfDepartment" });
 db.Department.belongsTo(db.Employee, { foreignKey: "department_head_id", as: "Head" });
+
+// Manager Association (Employee to Employee)
+db.Employee.belongsTo(db.Employee, { foreignKey: "reporting_manager_id", as: "Manager" });
+db.Employee.hasMany(db.Employee, { foreignKey: "reporting_manager_id", as: "Reportees" });
 
 // 3. Employee & User Associations
 db.User.hasOne(db.Employee, { foreignKey: "user_id" });
@@ -72,5 +78,13 @@ db.AdvanceSalary.belongsTo(db.User, { foreignKey: "rejected_by", as: "Rejector" 
 // Adding a few key ones:
 db.User.hasMany(db.Company, { foreignKey: "created_by", as: "CreatedCompanies" });
 db.Company.belongsTo(db.User, { foreignKey: "created_by", as: "Creator" });
+
+// 8. Bank Details
+db.Employee.hasOne(db.BankDetail, { foreignKey: "employee_id" });
+db.BankDetail.belongsTo(db.Employee, { foreignKey: "employee_id" });
+
+// 9. Salary Structure
+db.Employee.hasOne(db.SalaryStructure, { foreignKey: "employee_id" });
+db.SalaryStructure.belongsTo(db.Employee, { foreignKey: "employee_id" });
 
 module.exports = db;
