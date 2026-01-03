@@ -127,7 +127,7 @@ export default function LoginForm() {
 
   return (
     <div className={styles.authWrapper}>
-      <div className={styles.authContainer}>
+      <div className={styles.authLoginContainer}>
         <div className={styles.authCard}>
           {/* Header */}
           <div className={styles.authHeader}>
@@ -275,7 +275,7 @@ export default function LoginForm() {
           <div className={styles.authFooter}>
             <p className={styles.footerText}>
               Don&apos;t have an account?{" "}
-              <Link href="/signup" className={styles.footerLink}>
+              <Link href="/auth/register" className={styles.footerLink}>
                 Create one now
               </Link>
             </p>
