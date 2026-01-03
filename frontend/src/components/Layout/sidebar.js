@@ -1,5 +1,8 @@
 import { useState } from "react";
 import styles from "@/styles/sidebar.module.css";
+import Image from "next/image";
+import logo from "../../../public/smoothsync_people_logo_v.png";
+
 
 export default function Sidebar() {
     const [activeItem, setActiveItem] = useState("dashboard");
@@ -84,10 +87,13 @@ export default function Sidebar() {
                 {/* Logo */}
                 <div className={styles.logo}>
                     <div className={styles.logoIcon}>
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-                        </svg>
+                        <Image
+                            src={logo}
+                            alt="Company Logo"
+                            width={32}
+                            height={32}
+                            priority
+                        />
                     </div>
                     <span className={styles.logoText}>Company</span>
                 </div>

@@ -124,13 +124,19 @@
   padding: 0 12px;
 }
 
+.logoIcon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .logoIcon {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: linear-gradient(135deg, #b9f27c 0%, #7fcf5e 100%);
+  background: linear-gradient(135deg, #b9f27c32 0%, #80cf5e3a 100%);
   border-radius: 14px;
   color: #0a0d10;
   box-shadow: 0 4px 16px rgba(185, 242, 124, 0.3);
