@@ -24,6 +24,7 @@ exports.register = async (req, res) => {
             confirm_password,
         } = req.body;
 
+
         // 1. Validate required fields
         if (!company_name || !full_name || !email || !phone_number || !password || !confirm_password) {
             if (req.file) fs.unlinkSync(req.file.path); // Clean up uploaded file
@@ -121,10 +122,16 @@ exports.register = async (req, res) => {
             user: {
                 email: user.email,
                 role: user.role,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                phone: user.phone,
+                is_active: user.is_active,
             },
             company: {
                 id: company.id,
                 name: company.name,
+                company_code: company.company_code,
+                company_logo: company.company_logo,
             },
         });
 
