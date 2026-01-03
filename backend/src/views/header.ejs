@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Panel | SmoothSync</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fdfdfd;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #444;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #007bff;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-success {
+            background: #28a745;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: black;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #e9ecef;
+        }
+
+        .log-entry {
+            font-family: monospace;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .badge-info {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        .badge-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Loader CSS */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(2px);
+        }
+
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toast CSS */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .toast {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.3s ease-out;
+            min-width: 250px;
+            border-left: 5px solid #ccc;
+        }
+
+        .toast.success {
+            border-left-color: #28a745;
+        }
+
+        .toast.error {
+            border-left-color: #dc3545;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        function showLoader() {
+            document.getElementById('loader-overlay').style.display = 'flex';
+        }
+
+        // Auto-dismiss toasts
+        document.addEventListener('DOMContentLoaded', () => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(t => {
+                setTimeout(() => {
+                    t.style.opacity = '0';
+                    setTimeout(() => t.remove(), 300);
+                }, 4000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Global Loader -->
+    <div id="loader-overlay" class="loader-overlay">
+        <div style="text-align: center;">
+            <div class="loader"></div>
+            <p style="margin-top: 15px; font-weight: 600; color: #555;">Processing...</p>
+        </div>
+    </div>
