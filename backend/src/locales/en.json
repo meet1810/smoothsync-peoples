@@ -1,9 +1,10 @@
 {
-    "auth": {
-        "login_success": "Login successful",
-        "invalid_credentials": "Invalid email or password"
-    },
-    "common": {
-        "server_error": "Something went wrong"
-    }
+	"auth": {
+		"login_success": "Login successful",
+		"invalid_credentials": "Invalid email or password",
+		"no_token": "auth.no_token"
+	},
+	"common": {
+		"server_error": "Something went wrong"
+	}
 }

@@ -55,3 +55,5 @@
 {"level":"info","message":"✅ 6 Departments created.","timestamp":"2026-01-03 13:03:58"}
 {"level":"info","message":"Seeding Complete! Created: 2 Users, 1 Company, 6 Departments.","timestamp":"2026-01-03 13:03:58"}
 {"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 13:26:27"}
+{"level":"info","message":"Sync requested by undefined","timestamp":"2026-01-03 14:13:28"}
+{"level":"error","message":"Sync failed: deadlock detected","timestamp":"2026-01-03 14:14:44"}
