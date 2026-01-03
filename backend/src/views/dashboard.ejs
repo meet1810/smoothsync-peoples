@@ -1,0 +1,66 @@
+<%- include('header') %>
+    <div class="header">
+        <h2>🛠️ API Control Panel</h2>
+        <div>
+            <span style="margin-right: 15px;">Welcome, <%= user.first_name %> (<%= user.role %>)</span>
+            <a href="/panel/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="toast-container">
+        <% if (message) { %>
+            <div class="toast <%= type %>">
+                <span style="font-size: 20px; margin-right: 10px;">
+                    <%= type==='success' ? '✅' : '❌' %>
+                </span>
+                <div>
+                    <strong>
+                        <%= type==='success' ? 'Success' : 'Error' %>
+                    </strong>
+                    <div style="font-size: 14px; color: #555;">
+                        <%= message %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Database Actions</h3>
+        <p style="color: #666; margin-bottom: 20px;">Perform administrative actions on the database. These
+            actions are logged.</p>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <form action="/panel/sync" method="POST">
+                <button class="btn btn-primary"
+                    onclick="if(confirm('Syncing will alter the database schema. Continue?')) { showLoader(); return true; } else { return false; }">🔄
+                    Sync Database</button>
+            </form>
+
+            <form action="/panel/seed" method="POST">
+                <button class="btn btn-success"
+                    onclick="if(confirm('Seeding will insert demo data. Continue?')) { showLoader(); return true; } else { return false; }">🌱
+                    Run Seeder</button>
+            </form>
+
+            <form action="/panel/drop" method="POST">
+                <button class="btn btn-danger"
+                    onclick="if(confirm('⚠️ DANGER: This will DELETE ALL DATA. Are you absolutely sure?')) { showLoader(); return true; } else { return false; }">🗑
+                    Drop Database</button>
+            </form>
+
+            <a href="/panel/logs" class="btn btn-warning">📜 View Logs</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>📊 System Status</h3>
+        <p><strong>Environment:</strong>
+            <%= process.env.NODE_ENV || 'development' %>
+        </p>
+        <p><strong>Database:</strong> PostgreSQL</p>
+        <p><strong>Server Time:</strong>
+            <%= new Date().toLocaleString() %>
+        </p>
+    </div>
+    <%- include('footer') %>

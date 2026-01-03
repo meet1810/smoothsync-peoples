@@ -1,0 +1,9 @@
+{
+    "auth": {
+        "login_success": "लॉगिन सफल",
+        "invalid_credentials": "अमान्य ईमेल या पासवर्ड"
+    },
+    "common": {
+        "server_error": "कुछ गलत हो गया"
+    }
+}
