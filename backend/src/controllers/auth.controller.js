@@ -173,15 +173,18 @@ exports.login = async (req, res) => {
         return res.success("Login successful", {
             token,
             user: {
-                id: user.id,
                 email: user.email,
                 role: user.role,
-                company: user.company ? {
-                    id: user.company.id,
-                    name: user.company.name,
-                    company_code: user.company.company_code,
-                    company_logo: user.company.company_logo,
-                } : null,
+                first_name: user.first_name,
+                last_name: user.last_name,
+                phone: user.phone,
+                is_active: user.is_active,
+            },
+            company: {
+                id: user.company.id,
+                name: user.company.name,
+                company_code: user.company.company_code,
+                company_logo: user.company.company_logo,
             },
         });
     } catch (err) {
@@ -221,16 +224,19 @@ exports.verifyToken = async (req, res) => {
 
             return res.success("Token verified successfully", {
                 user: {
-                    id: user.id,
                     email: user.email,
                     role: user.role,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    phone: user.phone,
+                    is_active: user.is_active,
                 },
-                company: company ? {
-                    id: company.id,
-                    name: company.name,
-                    company_code: company.company_code,
-                    company_logo: company.company_logo,
-                } : null,
+                company: {
+                    id: user.company.id,
+                    name: user.company.name,
+                    company_code: user.company.company_code,
+                    company_logo: user.company.company_logo,
+                },
             });
         });
 
