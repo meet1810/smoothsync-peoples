@@ -1,6 +1,27 @@
+.appContainer {
+  position: relative;
+  min-height: 100vh;
+  background: #0a0d10;
+  overflow-x: hidden;
+}
+
+/* Video Background */
+.videoBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.3;
+}
+
 .wrapper {
   display: flex;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .main {
@@ -10,5 +31,13 @@
 }
 
 .content {
-  padding: 20px;
+  padding: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 24px 16px;
+  }
 }
