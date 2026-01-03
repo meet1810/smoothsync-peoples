@@ -36,5 +36,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Routes
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/panel", require("./panel/panel.routes"));
+app.use("/api/salary", require("./routes/salary.routes"));
+app.use("/api/attendance", require("./routes/attendance.routes"));
+app.use("/api/employees", require("./routes/employee.routes"));
 
 module.exports = app;
